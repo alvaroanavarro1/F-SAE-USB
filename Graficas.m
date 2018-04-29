@@ -157,8 +157,8 @@ elseif particular==2
             figure;
             plot(Timesec, RPM);
             grid on;
-            title('Revoluciones por Minuto');
-            xlabel('Tiempo <s>');
+            title('RPM');
+            xlabel('Time <s>');
             ylabel('RPM');
             
             
@@ -166,8 +166,8 @@ elseif particular==2
             figure;
             plot(Timesec,TPS,'r');
             grid on;
-            title('Abertura de la Mariposa');
-            xlabel('Tiempo <s>');
+            title('Throttle Position');
+            xlabel('Time <s>');
             ylabel('TPS <%>');
            
             
@@ -177,9 +177,9 @@ elseif particular==2
             figure;            
             plot(Timesec,VelocidadLineal);
             grid on;
-            title('Velocidad Lineal');
-            xlabel('Tiempo <s>');
-            ylabel('Velocidad <KPH>');
+            title('Speed');
+            xlabel('Time <s>');
+            ylabel('Speed <KPH>');
             
         
             
@@ -187,62 +187,62 @@ elseif particular==2
             %RPM/velocidad lineal
             plot(Timesec,RPM./VelocidadLineal);
             grid on;
-            title('Velocidad de la Caja');
-            xlabel('Tiempo <s>');
-            ylabel('Velocidad <KPH>');
+            title('Gearbox Speed');
+            xlabel('Time <s>');
+            ylabel('Speed <KPH>');
             
         
             
             figure;
             plot(times1,longaccelg);
             grid on;
-            title('Aceleracion longitudinal');
-            xlabel('Tiempo <s>');
-            ylabel('Aceleración <g>');
+            title('Longitudinal Acceleration');
+            xlabel('Time <s>');
+            ylabel('Acceleration <g>');
             
         
             
             figure;
             plot(times1,lataccelg);
             grid on;
-            title('Aceleracion lateral');
-            xlabel('Tiempo <s>');
-            ylabel('Aceleración <g>');
+            title('Lateral Acceleration');
+            xlabel('Time <s>');
+            ylabel('Acceleration <g>');
             
        
             
             figure;
             plot(Timesec, CoolantTempC);
             grid on;
-            title('Temperatura del motor');
-            xlabel('Tiempo <s>');
-            ylabel('Temperatura <C>');
+            title('Engine Temperature');
+            xlabel('Time <s>');
+            ylabel('Temperature <C>');
             
        
 
             figure;
             plot(Timesec, BatteryVoltV);
             grid on;
-            title('Voltaje de bateria');
-            xlabel('Tiempo <s>');
-            ylabel('Voltaje <v>');         
+            title('Battery Voltage');
+            xlabel('Time <s>');
+            ylabel('Voltage <v>');         
                    
         
             
             figure;
             plot(longaccelg,lataccelg);
-            title('Aceleraciones longitudinales vs Aceleraciones laterales');
-            xlabel('Aceleraciones laterales');
-            ylabel('Aceleraciones longitudinales');
+            title('Lateral Acceleration vs Longitudinal Acceleration');
+            xlabel('Lateral Acceleration');
+            ylabel('Longitudinal Acceleration');
             grid on;
 
         
             
             figure;
-            title('Porcentaje de deslizamiento');
+            title('Desired Percent Slip');
             plot(Timesec, ((AvgDrivenWheelSpeedMPH - AvgNonDrivenWheelSpeedMPH)./ AvgNonDrivenWheelSpeedMPH)*100);
             title('Slip Ratio <%>');
-            xlabel('Tiempo <s>');
+            xlabel('Time <s>');
             ylabel ('Slip Ratio <%>');
             grid on;  
     
