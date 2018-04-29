@@ -1,24 +1,24 @@
-particular = menu('Quieres una grafica en particular?', 'si', 'no');
+particular = menu('Do you want a specific graphic?', 'yes', 'no');
 if (particular == 1)
     
-    disp('Que quieres graficar');
+    disp('Which graphic do you want?');
     disp('1. RPM');
     disp('2. TPS');
-    disp('3. Velocidad Lineal');
-    disp('4. Velocidad de la caja');
-    disp('5. Aceleracion longitudinal');
-    disp('6. Aceleracion lateral');
-    disp('7. Potenciometro de la direccion');
-    disp('8. Aceleracion de las ruedas');
-    disp('9. Temperatura del motor');
-    disp('10. Voltaje de la bateria');
-    disp('11. Potenciometro de la suspension');
-    disp('12. Radio de la curvatura');
-    disp('13. Aceleraciones longitudinales vs laterales');
-    disp('14. Porcentaje de deslizamiento');
+    disp('3. Speed');
+    disp('4. Gearbox');
+    disp('5. Longitudinal Acceleration');
+    disp('6. Lateral Acceleration');
+    disp('7. Steering Potentiometer');
+    disp('8. Wheel Acceleration');
+    disp('9. Engine Temperature');
+    disp('10. Battery Voltage');
+    disp('11. Suspension Potentiometer');
+    disp('12. Curve Ratio');
+    disp('13. Longitudinal vs Lateral Acceleration');
+    disp('14. Desired Percent Slip');
 
 
-    eleccion = input('elija su opcion: ');
+    eleccion = input('Choose your option: ');
     
     switch(eleccion)
         
@@ -27,8 +27,8 @@ if (particular == 1)
             figure;
             plot(Timesec, RPM);
             grid on;
-            title('Revoluciones por Minuto');
-            xlabel('Tiempo <s>');
+            title('RPM');
+            xlabel('Time <s>');
             ylabel('RPM');
             
         case 2    
@@ -36,8 +36,8 @@ if (particular == 1)
             figure;
             plot(Timesec,TPS,'r');
             grid on;
-            title('Abertura de la Mariposa');
-            xlabel('Tiempo <s>');
+            title('Throttle position');
+            xlabel('Time <s>');
             ylabel('TPS <%>');
            
             
@@ -48,9 +48,9 @@ if (particular == 1)
             figure;            
             plot(Timesec,VelocidadLineal);
             grid on;
-            title('Velocidad Lineal');
-            xlabel('Tiempo <s>');
-            ylabel('Velocidad <KPH>');
+            title('Speed');
+            xlabel('Time <s>');
+            ylabel('Speed <KPH>');
             
         case 4
             
@@ -58,96 +58,96 @@ if (particular == 1)
             %RPM/velocidad lineal
             plot(Timesec,RPM./VelocidadLineal);
             grid on;
-            title('Velocidad de la Caja');
-            xlabel('Tiempo <s>');
-            ylabel('Velocidad <KPH>');
+            title('Gearbox Speed');
+            xlabel('Time <s>');
+            ylabel('Gearbox <KPH>');
             
         case 5
             
             figure;
             plot(times1,longaccelg);
             grid on;
-            title('Aceleracion longitudinal');
-            xlabel('Tiempo <s>');
-            ylabel('Aceleración <g>');
+            title('Longitudinal Acceleration');
+            xlabel('Time <s>');
+            ylabel('Acceleration <g>');
             
         case 6
             
             figure;
             plot(times1,lataccelg);
             grid on;
-            title('Aceleracion lateral');
-            xlabel('Tiempo <s>');
-            ylabel('Aceleración <g>');
+            title('Lateral Acceleration');
+            xlabel('Time <s>');
+            ylabel('Acceleration <g>');
             
         case 7
             
             figure;
-            title('Potenciometro de la direccion');
+            title('Steering Potentiometer');
             
         case 8
 
             aceleracion=diff(VelocidadLineal)./diff(Timesec);
             plot(Timesec(2:end),acceleracion);            
             figure;
-            title('Aceleracion de las ruedas');
-            xlabel('Tiempo <s>');
-            ylabel('Aceleración');
+            title('Wheel acceleracion');
+            xlabel('Time <s>');
+            ylabel('Acceleration');
             
         case 9
             
             figure;
             plot(Timesec, CoolantTempC,'xr');
             grid on;
-            title('Temperatura del motor');
+            title('Engine Temperature');
             axis([0 200 70 110]);
-            xlabel('Tiempo <s>');
-            ylabel('Temperatura <C>');
+            xlabel('Time <s>');
+            ylabel('Temperature <C>');
             
         case 10
 
             figure;
             plot(Timesec, BatteryVoltV);
             grid on;
-            title('Voltaje de bateria');
-            xlabel('Tiempo <s>');
-            ylabel('Voltaje <v>');
+            title('Battery Voltage');
+            xlabel('Time <s>');
+            ylabel('Voltage <v>');
 
             
         case 11
             
             figure;
-            title('Potenciometro de suspension');
+            title('Suspension Potentiometer');
             
         case 12
             
             figure;
             %(velocidad lineal)^2/aceleracion lateral
-            title('Radio de curvatura');
+            title('Curve Ratio');
             
         case 13
             
             figure;
             plot(longaccelg,lataccelg,'xr');
-            title('Aceleraciones longitudinales vs Aceleraciones laterales');
-            xlabel('Aceleraciones laterales');
-            ylabel('Aceleraciones longitudinales');
+            title('Lateral Acceleration vs Longitudinal Acceleration');
+            xlabel('Lateral Acceleration');
+            ylabel('Longitudinal Acceleration');
             grid on;
 
         case 14
             
             figure;
-            title('Porcentaje de deslizamiento');
+            title('Desired Percent Slip');
             plot(Timesec, ((AvgDrivenWheelSpeedMPH - AvgNonDrivenWheelSpeedMPH)./ AvgNonDrivenWheelSpeedMPH)*100);
 			title('Slip Ratio <%>');
-			xlabel('Tiempo <s>');
+			xlabel('Time <s>');
 			ylabel ('Slip Ratio <%>');
 			grid on;
             
             
         otherwise
             
-            disp('No existe esa opcion');
+            disp('Incorrect Option');
             
     end
     
