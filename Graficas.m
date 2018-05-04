@@ -6,17 +6,11 @@ if (particular == 1)
     disp('2. TPS');
     disp('3. Speed');
     disp('4. Gearbox');
-    disp('5. Longitudinal Acceleration');
-    disp('6. Lateral Acceleration');
-    disp('7. Steering Potentiometer');
-    disp('8. Wheel Acceleration');
-    disp('9. Engine Temperature');
-    disp('10. Battery Voltage');
-    disp('11. Suspension Potentiometer');
-    disp('12. Curve Ratio');
-    disp('13. Longitudinal vs Lateral Acceleration');
-    disp('14. Desired Percent Slip');
-
+    disp('5. Battery Voltage');
+    disp('6. Wheel Acceleration');
+    disp('7. Engine Temperature');
+    disp('8. Desired Percent Slip');
+    
 
     eleccion = input('Choose your option: ');
     
@@ -65,28 +59,14 @@ if (particular == 1)
         case 5
             
             figure;
-            plot(times1,longaccelg);
+            plot(Timesec, BatteryVoltV);
             grid on;
-            title('Longitudinal Acceleration');
+            title('Battery Voltage');
             xlabel('Time <s>');
-            ylabel('Acceleration <g>');
+            ylabel('Voltage <v>');
             
         case 6
             
-            figure;
-            plot(times1,lataccelg);
-            grid on;
-            title('Lateral Acceleration');
-            xlabel('Time <s>');
-            ylabel('Acceleration <g>');
-            
-        case 7
-            
-            figure;
-            title('Steering Potentiometer');
-            
-        case 8
-
             aceleracion=diff(VelocidadLineal)./diff(Timesec);
             plot(Timesec(2:end),acceleracion);            
             figure;
@@ -94,7 +74,7 @@ if (particular == 1)
             xlabel('Time <s>');
             ylabel('Acceleration');
             
-        case 9
+        case 7
             
             figure;
             plot(Timesec, CoolantTempC,'xr');
@@ -104,45 +84,17 @@ if (particular == 1)
             xlabel('Time <s>');
             ylabel('Temperature <C>');
             
-        case 10
+        case 8
 
-            figure;
-            plot(Timesec, BatteryVoltV);
-            grid on;
-            title('Battery Voltage');
-            xlabel('Time <s>');
-            ylabel('Voltage <v>');
-
-            
-        case 11
-            
-            figure;
-            title('Suspension Potentiometer');
-            
-        case 12
-            
-            figure;
-            %(velocidad lineal)^2/aceleracion lateral
-            title('Curve Ratio');
-            
-        case 13
-            
-            figure;
-            plot(longaccelg,lataccelg,'xr');
-            title('Lateral Acceleration vs Longitudinal Acceleration');
-            xlabel('Lateral Acceleration');
-            ylabel('Longitudinal Acceleration');
-            grid on;
-
-        case 14
-            
             figure;
             title('Desired Percent Slip');
             plot(Timesec, ((AvgDrivenWheelSpeedMPH - AvgNonDrivenWheelSpeedMPH)./ AvgNonDrivenWheelSpeedMPH)*100);
-			title('Slip Ratio <%>');
-			xlabel('Time <s>');
-			ylabel ('Slip Ratio <%>');
-			grid on;
+            title('Slip Ratio <%>');
+            xlabel('Time <s>');
+            ylabel ('Slip Ratio <%>');
+            grid on;
+            
+            
             
             
         otherwise
@@ -192,23 +144,6 @@ elseif particular==2
             ylabel('Speed <KPH>');
             
         
-            
-            figure;
-            plot(times1,longaccelg);
-            grid on;
-            title('Longitudinal Acceleration');
-            xlabel('Time <s>');
-            ylabel('Acceleration <g>');
-            
-        
-            
-            figure;
-            plot(times1,lataccelg);
-            grid on;
-            title('Lateral Acceleration');
-            xlabel('Time <s>');
-            ylabel('Acceleration <g>');
-            
        
             
             figure;
@@ -226,15 +161,6 @@ elseif particular==2
             title('Battery Voltage');
             xlabel('Time <s>');
             ylabel('Voltage <v>');         
-                   
-        
-            
-            figure;
-            plot(longaccelg,lataccelg);
-            title('Lateral Acceleration vs Longitudinal Acceleration');
-            xlabel('Lateral Acceleration');
-            ylabel('Longitudinal Acceleration');
-            grid on;
 
         
             
@@ -245,9 +171,7 @@ elseif particular==2
             xlabel('Time <s>');
             ylabel ('Slip Ratio <%>');
             grid on;  
-    
-    
-    
+      
     
 end
 
